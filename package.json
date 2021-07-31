@@ -1,0 +1,27 @@
+{
+  "name": "coursyserver",
+  "version": "1.0.0",
+  "description": "A basic web server",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "test": "jest ./tests"
+  },
+  "keywords": [],
+  "author": "skpatro23",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.13.5",
+    "nodemon": "^2.0.12",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "faker": "^5.5.3",
+    "jest": "^27.0.6"
+  }
+}
