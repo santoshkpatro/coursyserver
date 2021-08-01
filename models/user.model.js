@@ -1,6 +1,16 @@
 const mongoose = require('mongoose')
 const crypto = require('crypto')
 
+const enrolledSchema = new mongoose.Schema({
+    course: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Course',
+    },
+    enrolledOn: {
+        type: Date,
+    },
+})
+
 const userSchema = new mongoose.Schema(
     {
         name: {
@@ -27,6 +37,7 @@ const userSchema = new mongoose.Schema(
             type: Array,
             default: ['user'],
         },
+        enrolledCourses: [enrolledSchema],
     },
     {
         timestamps: true,
