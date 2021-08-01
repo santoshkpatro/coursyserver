@@ -6,5 +6,5 @@ mongoose
         useUnifiedTopology: true,
         useCreateIndex: true,
     })
-    .then(() => console.log('mongoDB CONNECTED'))
+    .then(() => console.log('MONGO DB CONNECTED'))
     .catch((e) => console.log('SOMETHING WENT WRONG WHILE CONNECTING TO DB'))

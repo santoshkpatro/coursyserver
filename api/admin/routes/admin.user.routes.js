@@ -7,14 +7,11 @@ const {
     deleteUser,
     addCourse,
     removeCourse,
-} = require('../controllers/user.controllers')
+} = require('../controllers/admin.user.controllers')
 
-const {
-    isAuthenticated,
-    isAdmin,
-} = require('../../../middlewares/auth.middlewares')
+const { isAuthenticated, isAdmin } = require('../../../middlewares/auth')
 
-const { getCourseById } = require('../../../params/course')
+const { getCourseById } = require('../../../middlewares/course')
 
 const router = express.Router()
 

@@ -6,12 +6,9 @@ const {
     getCourse,
     updateCourse,
     deleteCourse,
-} = require('../controllers/course.controller')
+} = require('../controllers/admin.course.controllers')
 
-const {
-    isAuthenticated,
-    isAdmin,
-} = require('../../../middlewares/auth.middlewares')
+const { isAuthenticated, isAdmin } = require('../../../middlewares/auth')
 
 const router = express.Router()
 

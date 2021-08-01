@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 const faker = require('faker')
 
 mongoose
-    .connect('mongodb://localhost:27017/coursy', {
+    .connect('mongodb://localhost:27017/coursy-test-db', {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,
