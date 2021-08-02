@@ -1,20 +1,23 @@
 const express = require('express')
 
+const { isAuthenticated } = require('../../../middlewares/auth')
+
 const {
-    createCourse,
-    getAllCourses,
-    getCourse,
+    getOpenCourses,
+    getEnrolledCourses,
+    getEnrolledCourseDetails,
 } = require('../controllers/course.controller')
 
-const { isAuthenticated, isAdmin } = require('../../../middlewares/auth')
+const { getCourseById } = require('../../../middlewares/course')
 
 const router = express.Router()
 
-// Admin Routes
-router.post('/', isAuthenticated, isAdmin, createCourse)
+router.param('courseId', getCourseById)
 
-router.get('/', isAuthenticated, isAdmin, getAllCourses)
+router.get('/', getOpenCourses)
 
-router.get('/:courseId', isAuthenticated, isAdmin, getCourse)
+router.get('/enrolled', isAuthenticated, getEnrolledCourses)
+
+router.get('/enrolled/:courseId', isAuthenticated, getEnrolledCourseDetails)
 
 module.exports = router

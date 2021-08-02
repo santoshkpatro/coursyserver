@@ -74,3 +74,25 @@ exports.logoutController = async (req, res) => {
         detail: 'Successfully Logged Out!!',
     })
 }
+
+exports.getProfile = async (req, res) => {
+    try {
+        const userProfile = await User.findById(req.userId)
+            .select('-_roles -createdAt -updatedAt -isActive')
+            .populate({
+                path: 'enrolledCourses',
+                populate: {
+                    path: 'course',
+                    select: 'courseTitle thumbnail_url',
+                },
+            })
+            .exec()
+
+        res.status(200).send(userProfile)
+    } catch (error) {
+        res.status(500).send({
+            detail: 'Something went wrong',
+            error,
+        })
+    }
+}
