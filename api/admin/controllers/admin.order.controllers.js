@@ -24,12 +24,12 @@ exports.creatOrder = async (req, res) => {
 }
 
 exports.getAllOrders = async (req, res) => {
-    const { page = 0, status = null } = req.query
+    const page = req.page
 
     try {
-        totalOrders = await Order.countDocuments()
+        totalOrders = await Order.find(req.query).countDocuments()
 
-        const orders = await Order.find()
+        const orders = await Order.find(req.query)
             .populate('course', 'courseTitle')
             .populate('user', 'name username')
             .limit(20)

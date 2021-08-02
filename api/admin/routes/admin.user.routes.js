@@ -13,6 +13,8 @@ const { isAuthenticated, isAdmin } = require('../../../middlewares/auth')
 
 const { getCourseById } = require('../../../middlewares/course')
 
+const { paginate } = require('../../../middlewares/global')
+
 const router = express.Router()
 
 router.param('courseId', getCourseById)
