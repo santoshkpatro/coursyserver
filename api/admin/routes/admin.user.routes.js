@@ -20,7 +20,7 @@ const router = express.Router()
 router.param('courseId', getCourseById)
 
 router.post('/', isAuthenticated, isAdmin, createUser)
-router.get('/', isAuthenticated, isAdmin, getAllUsers)
+router.get('/', isAuthenticated, isAdmin, paginate, getAllUsers)
 router.get('/:userId', isAuthenticated, isAdmin, getUser)
 router.patch('/:userId', isAuthenticated, isAdmin, updateUser)
 router.delete('/:userId', isAuthenticated, isAdmin, deleteUser)

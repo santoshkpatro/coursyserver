@@ -30,13 +30,12 @@ exports.createUser = async (req, res) => {
 }
 
 exports.getAllUsers = async (req, res) => {
-    const { page = 0 } = req.query
+    const page = req.page || 0
 
     try {
-        totalUsers = await User.countDocuments()
-        var users = []
+        totalUsers = await User.find(req.query).countDocuments()
 
-        users = await User.find()
+        const users = await User.find(req.query)
             .limit(20)
             .skip(parseInt(page) * 20)
             .exec()
