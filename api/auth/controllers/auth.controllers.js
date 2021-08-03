@@ -96,3 +96,36 @@ exports.getProfile = async (req, res) => {
         })
     }
 }
+
+exports.updateProfile = async (req, res) => {
+    const updates = Object.keys(req.body)
+    const allowedUpdates = ['name', 'avatar_url']
+    const isValidOperation = updates.every((update) =>
+        allowedUpdates.includes(update)
+    )
+
+    if (!isValidOperation) {
+        return res.status(400).send({ detail: 'Invalid updates' })
+    }
+    try {
+        const user = await User.findById(req.userId).exec()
+
+        if (!user) {
+            return res.status(404).send({
+                detail: 'User not found',
+            })
+        }
+
+        updates.forEach((update) => (user[update] = req.body[update]))
+        await user.save()
+
+        res.status(200).send({
+            detail: 'Profile updated successfully',
+        })
+    } catch (error) {
+        res.status(500).send({
+            detail: 'Something went wrong',
+            error,
+        })
+    }
+}

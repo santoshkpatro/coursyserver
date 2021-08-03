@@ -40,27 +40,19 @@ exports.getEnrolledCourses = async (req, res) => {
 
 exports.getEnrolledCourseDetails = async (req, res) => {
     try {
-        console.log(req.course)
-
         const { enrolledCourses } = await User.findById(req.userId)
             .select('enrolledCourses')
             .exec()
 
-        console.log(
+        if (
             enrolledCourses.filter(
-                (course) => course._id.toString() === req.course._id.toString()
-            ).length
-        )
-
-        // if (
-        //     enrolledCourses.filter(
-        //         (course) => course._id.toString() !== req.course._id.toString()
-        //     ).length === 0
-        // ) {
-        //     return res.status(403).send({
-        //         detail: 'You are not enrolled in this course!',
-        //     })
-        // }
+                (e) => e.course.toString() === req.course._id.toString()
+            ).length === 0
+        ) {
+            return res.status(403).send({
+                detail: 'You are not enrolled in this course',
+            })
+        }
 
         res.send(req.course)
     } catch (error) {

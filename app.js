@@ -15,6 +15,7 @@ const adminCourseRoutes = require('./api/admin/routes/admin.course.routes')
 const adminOrderRoutes = require('./api/admin/routes/admin.order.routes')
 
 const v1courseRoutes = require('./api/v1/routes/course.routes')
+const v1orderRoutes = require('./api/v1/routes/orders.routes')
 
 // Auth Routes (Admin + Users)
 app.use('/auth', authRoutes)
@@ -26,5 +27,6 @@ app.use('/admin/orders', adminOrderRoutes)
 
 // v1 routes (Users routes)
 app.use('/v1/courses', v1courseRoutes)
+app.use('/v1/orders', v1orderRoutes)
 
 module.exports = app

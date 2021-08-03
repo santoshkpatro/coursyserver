@@ -4,6 +4,7 @@ const {
     registerController,
     logoutController,
     getProfile,
+    updateProfile,
 } = require('../controllers/auth.controllers')
 
 const { isAuthenticated } = require('../../../middlewares/auth')
@@ -17,5 +18,7 @@ router.post('/register', registerController)
 router.get('/logout', logoutController)
 
 router.get('/profile', isAuthenticated, getProfile)
+
+router.patch('/profile', isAuthenticated, updateProfile)
 
 module.exports = router

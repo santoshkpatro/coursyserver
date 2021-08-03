@@ -6,7 +6,7 @@ const {
     getOpenCourses,
     getEnrolledCourses,
     getEnrolledCourseDetails,
-} = require('../controllers/course.controller')
+} = require('../controllers/course.controllers')
 
 const { getCourseById } = require('../../../middlewares/course')
 

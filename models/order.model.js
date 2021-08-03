@@ -26,7 +26,7 @@ const orderSchema = new mongoose.Schema(
         status: {
             type: String,
             default: 'Initiated',
-            enum: ['Initiated', 'Processing', 'Discarded', 'Complete'],
+            enum: ['Initiated', 'Processing', 'Discarded', 'Completed'],
         },
         orderAmount: Number,
         billingDetails: billingDetailsSchema,
